@@ -1,0 +1,94 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+int controller_sortComputer(LinkedList* pArrayListComputer)
+{
+	int retorno = -1;
+    if(pArrayListComputer != NULL)
+    {
+    	ll_sort(pArrayListComputer,computer_sort,1);
+    	retorno = 0;
+    }
+
+	return retorno;
+}
+
+/** \brief Listar empleados
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *><
+ */
+
+int controller_ListComputer(LinkedList* pArrayListComputer)
+{
+	int retorno = 1;
+	eComputer* pComputer;
+	int i;
+
+	if(pArrayListComputer != NULL && ll_len(pArrayListComputer) > 0) // que tenga aunque sea un elemento para listar
+	{
+		printf("\nId,Descripcion,Precio,idTipo,Oferta\n\n");
+
+		for (i=0;i<ll_len(pArrayListComputer);i++)
+		{
+			pComputer = ll_get(pArrayListComputer, i);
+
+			if(pComputer != NULL)
+			{
+				printf ("%d,%s,%d,%d,%s\n", pComputer->id,
+											pComputer->descripcion,
+											pComputer->precio,
+											pComputer->idTipo,
+											pComputer->oferta);
+	            }
+	        }
+
+	        retorno = 0;
+	    }
+
+	    return retorno;
+
+
+}
+
+int generarArchivoFiltrado(char* fileName,LinkedList* pArrayListComputer)
+{
+    int retorno = -1;
+    eComputer* pComputer;
+    int i;
+
+    FILE* pFile = fopen(fileName,"w+");
+
+    if(pArrayListComputer != NULL && pFile != NULL)
+    {
+        fprintf(pFile, "Id,Descripcion,Precio,idTipo,Oferta\n");
+
+        for (i=0;i<ll_len(pArrayListComputer);i++)
+        {
+            pComputer = ll_get(pArrayListComputer, i);
+
+            if(pComputer != NULL)
+            {
+                fprintf(pFile,"%d,%s,%d,%d,%s\n", pComputer->id,
+													pComputer->descripcion,
+													pComputer->precio,
+													pComputer->idTipo,
+													pComputer->oferta);
+            }
+        }
+
+        fclose(pFile);
+
+        retorno = 1;
+    }
+
+    return retorno;
+
+}

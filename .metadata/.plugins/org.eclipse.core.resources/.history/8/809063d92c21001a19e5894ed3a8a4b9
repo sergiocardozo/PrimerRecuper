@@ -1,0 +1,16 @@
+/*
+ * parser.h
+ *
+ *  Created on: 13 dic. 2019
+ *      Author: sergio
+ */
+
+#ifndef PARSER_H_
+#define PARSER_H_
+
+#include "LinkedList.h"
+
+int parser_parseEmpleados(char* fileName, LinkedList* listaComputer);
+
+
+#endif /* PARSER_H_ */

@@ -1,0 +1,15 @@
+/*
+ * controller.h
+ *
+ *  Created on: 13 dic. 2019
+ *      Author: sergio
+ */
+
+#ifndef CONTROLLER_H_
+#define CONTROLLER_H_
+
+int controller_loadFromText(char* path , LinkedList* pArrayListComputer);
+
+
+
+#endif /* CONTROLLER_H_ */

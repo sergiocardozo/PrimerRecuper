@@ -1,0 +1,35 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "LinkedList.h"
+#include "Computer.h"
+
+/** \brief Carga los datos de los empleados desde el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int controller_loadFromText(char* nombre[20] , LinkedList* pArrayListComputer)
+{
+	FILE* pFile;
+	int retorno = -1;
+
+	if(pArrayListComputer != NULL)
+	{
+		printf("\nIntroduzca nombre del archivo(sin extension)");
+		scanf("%s",nombre);
+		strcat(nombre,".csv");
+		pFile = fopen(nombre,"r");
+		if(pFile != NULL)
+		{
+			parser_parseComputer(nombre , pArrayListComputer);
+			fclose(pFile);
+			retorno = 0;
+		}
+	}
+	return retorno;
+}

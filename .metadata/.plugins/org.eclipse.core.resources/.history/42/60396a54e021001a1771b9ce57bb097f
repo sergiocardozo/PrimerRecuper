@@ -1,0 +1,63 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "controller.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+int main()
+{
+	LinkedList* listaComputer = ll_newLinkedList();
+	LinkedList* listaFiltradaDesk = ll_newLinkedList();
+	int opcion;
+	do
+	{
+		printf("/****************************************************\
+		\nMenu:\
+		\n1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).\
+		\n\n2. Ordenar por tipo\
+		\n3. Generar campo oferta\
+		\n4. Listar\
+		\n5. filtrar archivo solo desktop\
+		\n6. Salir\
+		\n*****************************************************/");
+		utn_getUnsignedInt("\nElija una opcion: ","Error,Ingrese solo numeros",1,sizeof(int),1,6,3,&opcion);
+		switch(opcion)
+		{
+		case 1:
+			// Leer entregas de archivo data.csv
+			   if(parser_eComputer("datos_Fin.csv",listaComputer)==1)
+			   {
+				   printf("Archivo leido correctamente\n");
+			   }
+			   else
+			   {
+				   printf("Error leyando entregas\n");
+			   }
+			   break;
+		case 2:
+			controller_sortComputer(listaComputer);
+			printf("\nDEBUG");
+			break;
+		case 3:
+			ll_map(listaComputer,computer_mappeado);
+			break;
+		case 4:
+			controller_ListComputer(listaComputer);
+			break;
+		case 5:
+			listaFiltradaDesk = ll_filter(listaComputer,refugio_filterSoloDesktop);
+			generarArchivoFiltrado("Filtrado.csv",listaFiltradaDesk);
+			break;
+		case 6:
+			break;
+		default:
+			printf("\nOpcion invalida, ingrese una opcion de 1 a 6,");
+		}
+
+	}while(opcion);
+
+	return 0;
+}

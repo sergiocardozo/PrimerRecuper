@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int parser_eComputer(char* fileName, LinkedList* listaVentas)
+{
+    int retorno = -1;
+    char bufferId[4096];
+    char bufferDescripcion[4096];
+    char bufferPrecioStr[4096];
+    char bufferIdTipoStr[4096];
+    char bufferOferta[4096];
+
+
+    eComputer* pComputer;
+    int cantidadDatos; // para saber si la cantidad de elementos que saqué del archivo está ok
+
+    FILE* pFile = fopen(fileName, "r");
+
+    if(pFile != NULL)
+    {
+        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",  bufferId, //fscanf lee de la cadena de carecteres mientras se cumpla la regla descripta
+        											bufferDescripcion, //mascara para no pisar el encabezado de la lista
+													bufferPrecioStr,
+													bufferIdTipoStr);
+        while(!feof(pFile))
+        {
+            cantidadDatos = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",  bufferId,
+																		bufferDescripcion,
+																		bufferPrecioStr,
+																		bufferIdTipoStr);
+
+            if(cantidadDatos == 4) // chequeo si recibí los 4 datos que pedí
+            {
+                pComputer = eComputer_newParametros(bufferId,
+                								bufferDescripcion,
+												bufferPrecioStr,
+												bufferIdTipoStr,
+												bufferOferta);
+                if(pComputer != NULL)
+                {
+                    if(!ll_add(listaVentas, pComputer))
+                    {
+
+                        //printf("%d\n", pComputer->cantidad);
+
+                        retorno = 1;
+                    }
+                }
+            }
+        }
+    }
+
+    fclose(pFile);
+
+    return retorno;
+}
+

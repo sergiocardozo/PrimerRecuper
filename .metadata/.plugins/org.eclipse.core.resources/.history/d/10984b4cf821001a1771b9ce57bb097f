@@ -1,0 +1,259 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+eComputer* computer_new()
+{
+    return (eComputer*) malloc(sizeof(eComputer));
+}
+
+int computer_delete(eComputer* this)
+{
+    int retorno = -1;
+
+    if(this != NULL)
+    {
+        free(this);
+        retorno = 0;
+    }
+
+    return retorno;
+}
+
+eComputer* eComputer_newParametros(char* id, char* descripcion, char* precio,
+                           char* tipo)
+{
+    eComputer* pComputer = computer_new();
+
+    if(pComputer != NULL)
+    {
+
+        refugio_setId(pComputer, id);
+        refugio_setDescripcion(pComputer, descripcion);
+        refugio_setPrecio(pComputer, precio);
+        refugio_setIdTipo(pComputer, tipo);
+    }
+
+    return pComputer;
+}
+
+int refugio_setId(eComputer* this, char* value)
+{
+    int id;
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidNumber(value))
+    {
+        id = atoi(value);
+
+        if(id >= 0)
+        {
+            this->id = id;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int refugio_getId(eComputer* this, int* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        *value = this->id;
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int refugio_setDescripcion(eComputer* this, char* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidTexto(value))
+    {
+        if(strlen(value) > 0)
+        {
+            strncpy(this->descripcion, value, sizeof(this->descripcion));
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int refugio_getDescripcion(eComputer* this, char* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        strncpy(value, this->descripcion, sizeof(this->descripcion));
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int refugio_setPrecio(eComputer* this, char* value)
+{
+	int retorno = -1;
+	int auxPrecio;
+
+	if(this != NULL && value != NULL && isValidNumber(value))
+	{
+		auxPrecio = atoi(value);
+
+		if(auxPrecio >= 0)
+		{
+			this->precio = auxPrecio;
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
+
+int refugio_getPrecio(eComputer* this, int* value)
+{
+	int retorno = -1;
+
+	if(this != NULL && value != NULL)
+	{
+		*value = this->precio;
+
+		retorno = 0;
+	}
+	return retorno;
+}
+
+int refugio_setIdTipo(eComputer* this, char* value)
+{
+	int retorno = -1;
+	int auxTipo;
+
+	if(this != NULL && value != NULL && isValidNumber(value))
+	{
+		auxTipo = atoi(value);
+
+		if(auxTipo >= 0)
+		{
+			this->precio = auxTipo;
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
+
+int refugio_getIdTipo(eComputer* this, int* value)
+{
+	int retorno = -1;
+
+	if(this != NULL && value != NULL)
+	{
+		*value = this->idTipo;
+
+		retorno = 0;
+	}
+	return retorno;
+
+}
+
+int refugio_setOferta(eComputer* this, char* value)
+{
+	int retorno = -1;
+
+	if(this != NULL && value != NULL && isValidName(value)) // && isFecha(value))
+	{
+		if(strlen(value) > 0)
+		{
+			strncpy(this->oferta, value, sizeof(this->oferta));
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
+
+int refugio_getOferta(eComputer* this, char* value)
+{
+	int retorno = -1;
+	if(this != NULL)
+	{
+		if(isValidName(value))
+		{
+			strncpy(this->oferta,value,sizeof(this->oferta));
+			retorno = 0;
+		}
+
+	}
+	return retorno;
+}
+
+int computer_sort(void* thisA, void* thisB )
+{
+	int retorno = 0;
+	/*char idTipoThisA[128];
+	char idTipoThisB[128];
+
+	refugio_getIdTipo((eComputer*)thisA,idTipoThisA);
+	refugio_getIdTipo((eComputer*)thisB,idTipoThisB);
+
+	if(strcmp(idTipoThisA,idTipoThisB)>0)
+	{
+		retorno=1;
+	}
+	else if(strcmp(idTipoThisA,idTipoThisB)<0)
+	{
+		retorno=-1;
+	}*/
+	return retorno;
+}
+
+int computer_mappeado(void* pComputer)
+{
+	int retorno = -1;
+	/*int oferta;
+	eComputer* pComputerAux = pComputer;
+	int idTipo;
+	int auxPrecio;
+
+	refugio_getIdTipo(pComputerAux, idTipo);
+	refugio_getPrecio(pComputerAux, &auxPrecio);
+
+	if(pComputerAux->idTipo == LAPTOP)
+	{
+		oferta = "SIN DATOS";
+		if(!refugio_setOferta(pComputerAux, oferta))
+		{
+			retorno = 1;
+		}
+	}
+	else if(pComputerAux->idTipo == DESKTOP && auxPrecio >= 20000)
+	{
+		oferta = "50% DESCUENTO";
+		if(!refugio_setOferta(pComputerAux, oferta))
+		{
+			retorno = 1;
+		}
+	}*/
+
+	return retorno;
+}
+
+int refugio_filterSoloDesktop(void* pComputer)
+{
+    int retorno = -1;
+  /* eComputer* pAuxComputer = pComputer;
+
+    if(strcmp(pAuxComputer->idTipo,2))
+    {
+        retorno = 0;
+    }
+*/
+    return retorno;
+}
+

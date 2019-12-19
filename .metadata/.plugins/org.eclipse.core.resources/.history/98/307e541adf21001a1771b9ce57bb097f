@@ -1,0 +1,114 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+int controller_sortComputer(LinkedList* pArrayListComputer)
+{
+	int retorno = -1;
+    if(pArrayListComputer != NULL)
+    {
+    	ll_sort(pArrayListComputer,computer_sort,1);
+    	retorno = 0;
+    }
+
+	return retorno;
+}
+
+/** \brief Listar empleados
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *><
+ */
+
+int controller_ListComputer(LinkedList* pArrayListComputer)
+{
+	int retorno = -1;
+	eComputer* pComputer;
+	int i;
+	int auxId;
+	char auxDescripcion[120];
+	int auxPrecio;
+	int auxIdTipo;
+	char auxIdTipoChar[30];
+	char auxOferta[30];
+
+	if(pArrayListComputer != NULL && ll_len(pArrayListComputer) > 0) // que tenga aunque sea un elemento para listar
+	{
+		printf("\nId,Descripcion,Precio,idTipo,oferta\n\n");
+
+		for (i=0;i<ll_len(pArrayListComputer);i++)
+		{
+			pComputer = ll_get(pArrayListComputer, i);
+			strcpy(auxDescripcion,pComputer->descripcion);
+			strcpy(auxOferta,pComputer->oferta);
+			computer_getId(pComputer,&auxId);
+			computer_getDescripcion(pComputer,auxDescripcion);
+			computer_getPrecio(pComputer,&auxPrecio);
+			computer_getIdTipo(pComputer,&auxIdTipo);
+			computer_getOferta(pComputer,auxOferta);
+			if(auxIdTipo == 1)
+			{
+				strcpy(auxIdTipoChar,"DESKTOP");
+			}
+			else
+			{
+				strcpy(auxIdTipoChar,"LAPTOP");
+			}
+
+			if(pComputer != NULL)
+			{
+				printf ("%d,%s,%d,%s,%s\n", auxId,
+											auxDescripcion,
+											auxPrecio,
+											auxIdTipoChar,
+											auxOferta);
+	            }
+	        }
+
+	        retorno = 0;
+	    }
+
+	    return retorno;
+
+
+}
+int generarArchivoFiltrado(char* fileName,LinkedList* pArrayListComputer)
+{
+    int retorno = -1;
+    eComputer* pComputer;
+    int i;
+
+    FILE* pFile = fopen(fileName,"w+");
+
+    if(pArrayListComputer != NULL && pFile != NULL)
+    {
+        fprintf(pFile, "Id,Descripcion,Precio,idTipo,Oferta\n");
+
+        for (i=0;i<ll_len(pArrayListComputer);i++)
+        {
+            pComputer = ll_get(pArrayListComputer, i);
+
+            if(pComputer != NULL)
+            {
+                fprintf(pFile,"%d,%s,%d,%d,%s\n", pComputer->id,
+													pComputer->descripcion,
+													pComputer->precio,
+													pComputer->idTipo,
+													pComputer->oferta);
+            }
+        }
+
+        fclose(pFile);
+
+        retorno = 1;
+    }
+
+    return retorno;
+
+}

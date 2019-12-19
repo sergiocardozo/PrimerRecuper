@@ -1,0 +1,79 @@
+/*
+ ============================================================================
+ Name        : main.c
+ Author      : 
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "controller.h"
+#include "LinkedList.h"
+#include "Computer.h"
+
+int main()
+{
+	int opcion;
+	char nombreArchivo[20];
+	int flag = 0;
+
+
+	LinkedList* listaComputer = ll_newLinkedList();
+		do
+		{
+			printf("\n/****************************************************\
+			\nMenu:\
+			\n1. Ingrese el nombre del archivo que desea cargar\
+			\n\n2. Ordenar archivo por tipo\
+			\n3. Listar datos del archivo\
+			\n4. Asignar al campo oferta sus datos\
+			\n5. Filtrar lista solo DESKTOP\
+			\n6. Generar archivo de salida\
+			\n\n7. Salir del programa\
+			\n*****************************************************/");
+			utn_getUnsignedInt("\nElija una opcion: ","Error,Ingrese solo numeros",1,sizeof(int),1,7,3,&opcion);
+			switch(opcion)
+			{
+			case 1:
+				if(flag ==  0)
+				{
+					system("cls");
+					printf("\nIntroduzca nombre del archivo: ");
+					scanf("%s",nombreArchivo);
+					parser_parseComputer(nombreArchivo,listaComputer);
+					flag = 1;
+					system("pause");
+				}
+				else if(flag == 1)
+				{
+					printf("\nEl archivo ya se cargo correctamente");
+				}
+				break;
+			case 2:
+
+
+
+				break;
+			case 3:
+				controller_ListComputer(listaComputer);
+				break;
+			case 4:
+
+				break;
+			case 5:
+
+				break;
+			default:
+				printf("\nOpcion invalida, ingrese una opcion de 1 a 6,");
+			}
+
+		}while(opcion);
+
+	return 0;
+}

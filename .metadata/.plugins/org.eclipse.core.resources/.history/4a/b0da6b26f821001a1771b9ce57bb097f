@@ -1,0 +1,50 @@
+/*
+ * entidad.h
+ *
+ *  Created on: 12 dic. 2019
+ *      Author: alumno
+ */
+
+#ifndef ECOMPUTER_H_
+#define ECOMPUTER_H_
+
+
+typedef struct
+{
+	int id;
+	char descripcion[200];
+	int precio;
+	int idTipo;
+	char oferta[50];
+
+}eComputer;
+
+eComputer* computer_new();
+
+int computer_delete(eComputer* this);
+
+eComputer* eComputer_newParametros(char* id, char* descripcion, char* precio,
+                           char* tipo, char* oferta);
+
+int refugio_setId(eComputer* this, char* value);
+int refugio_getId(eComputer* this, int* value);
+
+int refugio_setDescripcion(eComputer* this, char* value);
+int refugio_getDescripcion(eComputer* this, char* value);
+
+int refugio_setPrecio(eComputer* this, char* value);
+int refugio_getPrecio(eComputer* this, int* value);
+
+int refugio_setIdTipo(eComputer* this, char* value);
+int refugio_getIdTipo(eComputer* this, int* value);
+
+int refugio_setOferta(eComputer* this, char* value);
+int refugio_getOferta(eComputer* this, char* value);
+
+int computer_sort(void* thisA, void* thisB );
+
+int computer_mappeado(void* pComputer);
+
+int refugio_filterSoloDesktop(void* pComputer);
+
+#endif /* ECOMPUTER_H_ */

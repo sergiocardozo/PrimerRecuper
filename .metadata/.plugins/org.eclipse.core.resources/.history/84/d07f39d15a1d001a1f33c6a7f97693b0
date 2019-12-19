@@ -1,0 +1,25 @@
+/*
+ * Computer.h
+ *
+ *  Created on: 13 dic. 2019
+ *      Author: sergio
+ */
+
+#ifndef COMPUTER_H_
+#define COMPUTER_H_
+
+typedef struct
+{
+	int id;
+	char descripcion[200];
+	int precio;
+	int idTipo;
+	char oferta[50];
+
+}eComputer;
+
+eComputer* computer_new();
+
+
+
+#endif /* COMPUTER_H_ */

@@ -1,0 +1,12 @@
+LaunchTargetManager/configs/Parcial2(TERMINADO)=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/main=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/configs/parcial=org.eclipse.launchbar.core.launchTargetType.local\:Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:main,org.eclipse.launchbar.core.descriptorType.default\:Parcial2(TERMINADO),org.eclipse.launchbar.core.descriptorType.default\:parcial
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:Parcial2(TERMINADO)/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:Parcial2(TERMINADO)/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:main/activeLaunchMode=run
+org.eclipse.launchbar.core.descriptorType.default\:main/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local

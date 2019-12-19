@@ -1,0 +1,175 @@
+12:16:35 **** Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/Linkedlist.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/Linkedlist.d" -MT"src/Linkedlist.o" -o "src/Linkedlist.o" "../src/Linkedlist.c"
+Finished building: ../src/Linkedlist.c
+ 
+Building file: ../src/controller.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/controller.d" -MT"src/controller.o" -o "src/controller.o" "../src/controller.c"
+Finished building: ../src/controller.c
+ 
+Building file: ../src/eComputer.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/eComputer.d" -MT"src/eComputer.o" -o "src/eComputer.o" "../src/eComputer.c"
+Finished building: ../src/eComputer.c
+ 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+../src/parcial.c: In function ‘main’:
+../src/parcial.c:13:14: warning: variable ‘listaDesktop’ set but not used [-Wunused-but-set-variable]
+  LinkedList* listaDesktop;
+              ^~~~~~~~~~~~
+Finished building: ../src/parcial.c
+ 
+Building file: ../src/parser.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parser.d" -MT"src/parser.o" -o "src/parser.o" "../src/parser.c"
+Finished building: ../src/parser.c
+ 
+Building file: ../src/utn.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/utn.d" -MT"src/utn.o" -o "src/utn.o" "../src/utn.c"
+Finished building: ../src/utn.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+12:17:48 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+../src/parcial.c: In function ‘main’:
+../src/parcial.c:13:14: warning: variable ‘listaDesktop’ set but not used [-Wunused-but-set-variable]
+  LinkedList* listaDesktop;
+              ^~~~~~~~~~~~
+Finished building: ../src/parcial.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+12:18:21 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+../src/parcial.c: In function ‘main’:
+../src/parcial.c:13:14: warning: variable ‘listaDesktop’ set but not used [-Wunused-but-set-variable]
+  LinkedList* listaDesktop = ll_newLinkedList();
+              ^~~~~~~~~~~~
+Finished building: ../src/parcial.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+12:18:59 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+../src/parcial.c: In function ‘main’:
+../src/parcial.c:13:14: warning: variable ‘listaDesktop’ set but not used [-Wunused-but-set-variable]
+  LinkedList* listaDesktop = ll_newLinkedList();
+              ^~~~~~~~~~~~
+Finished building: ../src/parcial.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+12:25:50 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/controller.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/controller.d" -MT"src/controller.o" -o "src/controller.o" "../src/controller.c"
+Finished building: ../src/controller.c
+ 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+Finished building: ../src/parcial.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+12:25:52 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.
+14:33:23 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/controller.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/controller.d" -MT"src/controller.o" -o "src/controller.o" "../src/controller.c"
+Finished building: ../src/controller.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+14:33:28 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.
+14:34:04 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.
+14:34:05 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.
+14:43:09 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+Finished building: ../src/parcial.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+14:43:12 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.
+14:43:27 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.
+15:03:31 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/parcial.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/parcial.d" -MT"src/parcial.o" -o "src/parcial.o" "../src/parcial.c"
+Finished building: ../src/parcial.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+15:04:39 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+Building file: ../src/controller.c
+Invoking: GCC C Compiler
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -MMD -MP -MF"src/controller.d" -MT"src/controller.o" -o "src/controller.o" "../src/controller.c"
+Finished building: ../src/controller.c
+ 
+Building target: parcial
+Invoking: GCC C Linker
+gcc  -o "parcial"  ./src/Linkedlist.o ./src/controller.o ./src/eComputer.o ./src/parcial.o ./src/parser.o ./src/utn.o   
+Finished building target: parcial
+ 
+15:04:42 **** Incremental Build of configuration Debug for project parcial ****
+make all 
+make: No se hace nada para 'all'.

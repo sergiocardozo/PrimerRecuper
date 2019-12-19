@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "LinkedList.h"
+#include "Computer.h"
+
+eComputer* computer_new()
+{
+    return (Refugio*) malloc(sizeof(Refugio));
+}
+
+int refugio_delete(Refugio* this)
+{
+    int retorno = -1;
+
+    if(this != NULL)
+    {
+        free(this);
+        retorno = 0;
+    }
+
+    return retorno;
+}
+
+Refugio* refugio_newParametros(char* idCachorroStr, char* nombre, char* diasStr,
+                           char* raza, char* reservado, char* genero)
+{
+    Refugio* pRefugio = refugio_new();
+
+    if(pRefugio != NULL)
+    {
+
+        refugio_setId(pRefugio, idCachorroStr);
+        refugio_setNombre(pRefugio, nombre);
+        refugio_setDiasStr(pRefugio, diasStr);
+        refugio_setRaza(pRefugio, raza);
+        refugio_setReservado(pRefugio, reservado);
+        refugio_setGenero(pRefugio, genero);
+    }
+
+    return pRefugio;
+}
+
+int refugio_setId(Refugio* this, char* value)
+{
+    int id;
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidNumber(value))
+    {
+        id = atoi(value);
+
+        if(id >= 0)
+        {
+            this->idCachorro = id;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int refugio_getId(Refugio* this, int* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        *value = this->idCachorro;
+
+        retorno = 0;
+    }
+    return retorno;
+}
+

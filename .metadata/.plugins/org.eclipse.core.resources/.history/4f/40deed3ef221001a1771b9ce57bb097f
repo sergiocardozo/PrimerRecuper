@@ -1,0 +1,195 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "LinkedList.h"
+#include "Computer.h"
+
+eComputer* computer_new()
+{
+    return (eComputer*) malloc(sizeof(eComputer));
+}
+
+int computer_delete(eComputer* this)
+{
+    int retorno = -1;
+
+    if(this != NULL)
+    {
+        free(this);
+        retorno = 0;
+    }
+
+    return retorno;
+}
+
+eComputer* computer_newParametros(char* id, char* descripcion, char* precio,
+                           char* idTipo)
+{
+    eComputer* pComputer = computer_new();
+
+    if(pComputer != NULL)
+    {
+
+        computer_setId(pComputer, id);
+        computer_setDescripcion(pComputer, descripcion);
+        computer_setPrecio(pComputer, precio);
+        computer_setIdTipo(pComputer, idTipo);
+
+    }
+
+    return pComputer;
+}
+
+int computer_setId(eComputer* this, char* value)
+{
+    int id;
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidNumber(value))
+    {
+        id = atoi(value);
+
+        if(id >= 0)
+        {
+            this->id = id;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int computer_getId(eComputer* this, int* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        *value = this->id;
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int computer_setDescripcion(eComputer* this, char* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidTexto(value))
+    {
+        if(strlen(value) > 0)
+        {
+            strncpy(this->descripcion, value, sizeof(this->descripcion));
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int computer_getDescripcion(eComputer* this, char* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        strncpy(value, this->descripcion, sizeof(this->descripcion));
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int computer_setPrecio(eComputer* this, char* value)
+{
+    int auxPrecio;
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidNumber(value))
+    {
+        auxPrecio = atoi(value);
+
+        if(auxPrecio >= 0)
+        {
+            this->precio = auxPrecio;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int computer_getPrecio(eComputer* this, int* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        *value = this->precio;
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+int computer_setIdTipo(eComputer* this, char* value)
+{
+    int auxIdTipo;
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidNumber(value))
+    {
+        auxIdTipo = atoi(value);
+
+        if(auxIdTipo >= 0)
+        {
+            this->idTipo = auxIdTipo;
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int computer_getIdTipo(eComputer* this, int* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        *value = this->idTipo;
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+
+int computer_setOferta(eComputer* this, char* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL && isValidTexto(value))
+    {
+        if(strlen(value) > 0)
+        {
+            strncpy(this->oferta, value, sizeof(this->oferta));
+            retorno = 0;
+        }
+    }
+    return retorno;
+}
+
+int computer_getOferta(eComputer* this, char* value)
+{
+    int retorno = -1;
+
+    if(this != NULL && value != NULL)
+    {
+        strncpy(value, this->oferta, sizeof(this->oferta));
+
+        retorno = 0;
+    }
+    return retorno;
+}
+
+

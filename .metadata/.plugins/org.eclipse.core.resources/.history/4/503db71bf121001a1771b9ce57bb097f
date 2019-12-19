@@ -1,0 +1,53 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "LinkedList.h"
+#include "Computer.h"
+
+int parser_parseComputer(char* fileName, LinkedList* listaComputer)
+{
+    int retorno = -1;
+    char bufferId[20];
+    char bufferDescripcion[150];
+    char bufferPrecio[20];
+    char bufferOferta[20];
+    eComputer *pComputer;
+    int cantidadDatos; // para saber si la cantidad de elementos que saqué del archivo está ok
+
+    FILE* pFile = fopen(fileName, "r");
+
+    if(pFile != NULL)
+    {
+        fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",  bufferId,
+                                            bufferDescripcion,
+                                            bufferPrecio,
+											bufferOferta);
+        while(!feof(pFile))
+        {
+            cantidadDatos = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",  bufferId,
+                                                                    bufferDescripcion,
+                                                                    bufferPrecio,
+																	bufferOferta);
+
+            if(cantidadDatos == 4) // chequeo si recibí los 4 datos que pedí
+            {
+                pComputer = computer_newParametros(     bufferId,
+                                                        bufferDescripcion,
+                                                        bufferPrecio,
+                                                        bufferOferta); // acá se carga basura
+
+                if(pComputer != NULL)
+                {
+                    if(!ll_add(listaComputer,pComputer))
+                    {
+                        retorno = 1;
+                    }
+                }
+            }
+        }
+    }
+
+    fclose(pFile);
+
+    return retorno;
+}

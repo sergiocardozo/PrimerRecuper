@@ -1,0 +1,10 @@
+00:22:17 **** Incremental Build of configuration Debug for project Parcial2(TERMINADO) ****
+make all 
+Building target: Parcial2
+Invoking: GCC C Linker
+gcc  -o "Parcial2(TERMINADO)"  ./src/Controller.o ./src/Entidad.o ./src/LinkedList.o ./src/Opciones.o ./src/Parcial.o ./src/parser.o   
+Finished building target: Parcial2
+ 
+
+00:22:17 Build Finished. 0 errors, 0 warnings. (took 194ms)
+

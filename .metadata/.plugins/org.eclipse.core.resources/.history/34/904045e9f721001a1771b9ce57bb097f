@@ -1,0 +1,59 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+/** \brief Parsea los datos los datos de los empleados desde el archivo data.csv (modo texto).
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *
+ */
+int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListComputer)
+{
+	eComputer* pComputer;
+
+	int retorno= 0;
+	int cantidadDatos;
+	char bufferId[100];
+	char bufferDescripcion[200];
+	char bufferPrecio[100];
+	char bufferIdTipo[100];
+
+
+	if(pFile!=NULL && pArrayListComputer!=NULL)
+	{
+		fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,
+												bufferDescripcion,
+												bufferPrecio,
+												bufferIdTipo);
+		while(!feof(pFile))
+		{
+			cantidadDatos = fscanf(pFile,"%[^,],%[^,],%[^,],%[^\n]\n",bufferId,
+																	bufferDescripcion,
+																	bufferPrecio,
+																	bufferIdTipo);
+
+			if(cantidadDatos == 4)
+			{
+				  pComputer = employee_newParametros(bufferId,
+						  	  	  	  	  	  	  	  bufferDescripcion,
+													  bufferPrecio,
+													  bufferIdTipo);
+
+				  if(pComputer != NULL)
+				  {
+					  if(!ll_add(pArrayListComputer,pComputer))
+					  {
+						  retorno = 0;
+					  }
+				  }
+			}
+		}
+	}
+	return retorno;
+}

@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "LinkedList.h"
+#include "Computer.h"
+
+
+int controller_ListComputer(LinkedList* pArrayListComputer)
+{
+	int retorno = 1;
+	eComputer* pComputer;
+	int i;
+	char auxIdTipo[30];
+
+	if(pArrayListComputer != NULL && ll_len(pArrayListComputer) > 0) // que tenga aunque sea un elemento para listar
+	{
+		printf("\nId,Descripcion,Precio,idTipo,Oferta\n\n");
+
+		for (i=0;i<ll_len(pArrayListComputer);i++)
+		{
+			pComputer = ll_get(pArrayListComputer, i);
+			if(pComputer->idTipo == 1)
+			{
+				strcpy(auxIdTipo,"DESKTOP");
+			}
+			else
+			{
+				strcpy(auxIdTipo,"LAPTOP");
+			}
+
+			if(pComputer != NULL)
+			{
+				printf ("%d,%s,%d,%s,%s\n", pComputer->id,
+											pComputer->descripcion,
+											pComputer->precio,
+											auxIdTipo,
+											pComputer->oferta);
+	            }
+	        }
+
+	        retorno = 0;
+	    }
+
+	    return retorno;
+
+
+}

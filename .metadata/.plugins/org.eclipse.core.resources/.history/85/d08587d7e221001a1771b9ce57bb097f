@@ -1,0 +1,111 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "utn.h"
+#include "parser.h"
+#include "Linkedlist.h"
+#include "eComputer.h"
+
+int controller_sortComputer(LinkedList* pArrayListComputer)
+{
+	int retorno = -1;
+    if(pArrayListComputer != NULL)
+    {
+    	ll_sort(pArrayListComputer,computer_sort,1);
+    	retorno = 0;
+    }
+
+	return retorno;
+}
+
+/** \brief Listar empleados
+ *
+ * \param path char*
+ * \param pArrayListEmployee LinkedList*
+ * \return int
+ *><
+ */
+
+int controller_ListComputer(LinkedList* ArrayEntidad)
+{
+	 * pAux;
+	    int retorno=-1;
+	    int i;
+	    int auxId;
+	    char auxDesc[128];
+	    int auxPrecio;
+	    int auxidTipo;
+	    char auxOferta[30];
+	    char auxTipoDesc[20];
+	    if(ArrayEntidad!=NULL)
+	    {
+	    	for(i=0;i<ll_len(ArrayEntidad);i++)
+	        {
+	            pAux = ll_get(ArrayEntidad,i);
+	            strcpy(auxDesc,pAux->descripcion);
+	            strcpy(auxOferta,pAux->oferta);
+			refugio_getId(pComputer,&auxId);
+			refugio_getDescripcion(pComputer,auxDescripcion);
+			refugio_getPrecio(pComputer,&auxPrecio);
+			refugio_getIdTipo(pComputer,&auxIdTipo);
+			refugio_getOferta(pComputer,auxOferta);
+			if(auxIdTipo == 1)
+			{
+				strcpy(auxIdTipoChar,"DESKTOP");
+			}
+			else
+			{
+				strcpy(auxIdTipoChar,"LAPTOP");
+			}
+
+			if(pComputer != NULL)
+			{
+				printf ("%d,%s,%d,%s,%s\n", auxId,
+											auxDescripcion,
+											auxPrecio,
+											auxIdTipoChar,
+											auxOferta);
+	            }
+	        }
+
+	        retorno = 0;
+	    }
+
+	    return retorno;
+
+
+}
+int generarArchivoFiltrado(char* fileName,LinkedList* pArrayListComputer)
+{
+    int retorno = -1;
+    eComputer* pComputer;
+    int i;
+
+    FILE* pFile = fopen(fileName,"w+");
+
+    if(pArrayListComputer != NULL && pFile != NULL)
+    {
+        fprintf(pFile, "Id,Descripcion,Precio,idTipo,Oferta\n");
+
+        for (i=0;i<ll_len(pArrayListComputer);i++)
+        {
+            pComputer = ll_get(pArrayListComputer, i);
+
+            if(pComputer != NULL)
+            {
+                fprintf(pFile,"%d,%s,%d,%d,%s\n", pComputer->id,
+													pComputer->descripcion,
+													pComputer->precio,
+													pComputer->idTipo,
+													pComputer->oferta);
+            }
+        }
+
+        fclose(pFile);
+
+        retorno = 1;
+    }
+
+    return retorno;
+
+}

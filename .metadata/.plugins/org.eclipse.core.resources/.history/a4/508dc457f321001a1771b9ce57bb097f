@@ -1,0 +1,39 @@
+/*
+ * Computer.h
+ *
+ *  Created on: 13 dic. 2019
+ *      Author: sergio
+ */
+
+#ifndef COMPUTER_H_
+#define COMPUTER_H_
+
+typedef struct
+{
+	int id;
+	char descripcion[200];
+	int precio;
+	int idTipo;
+	char oferta[50];
+
+}eComputer;
+
+eComputer* computer_new();
+int computer_delete(eComputer* this);
+eComputer* computer_newParametros(char* id, char* descripcion, char* precio,
+                           char* idTipo);
+
+int computer_setId(eComputer* this, int id);
+int computer_getId(eComputer* this, int* id);
+int computer_setDescripcion(eComputer* this, char value);
+int computer_getDescripcion(eComputer* this, char* value);
+int computer_setPrecio(eComputer* this, char* value);
+int computer_getPrecio(eComputer* this, int* value);
+int computer_setIdTipo(eComputer* this, char* value);
+int computer_getIdTipo(eComputer* this, int* value);
+int computer_setOferta(eComputer* this, char* value);
+int computer_getOferta(eComputer* this, char* value);
+
+
+
+#endif /* COMPUTER_H_ */
